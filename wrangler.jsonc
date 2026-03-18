@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "cepattop",
+  "name": "rianlabs",
   "main": "_worker.js",
   "compatibility_date": "2025-09-27",
   "observability": {
@@ -13,7 +13,7 @@
     "nodejs_compat"
   ],
   "vars": {
-    "ALLOWED_ORIGINS": "https://cepat.icu,https://www.cepat.icu,https://cepat.top,https://www.cepat.top",
+    "ALLOWED_ORIGINS": "https://rianlabs.id,https://www.rianlabs.id,https://rianlabs.pages.dev",
     "APP_GAS_URL": "https://script.google.com/macros/s/AKfycbxhxCAqmu436zGGsvKaZKLWA7xNcnu7V4sxZeVfuyRY8zJneyMVvpZ0O26CHwF2NqgZCQ/exec",
     "MOOTA_GAS_URL": "https://script.google.com/macros/s/AKfycbzbZ2uVuN1kr93pP-f8k5sTBK6ZlV8LbIx2HuYI4ufKqz7d9NL6HcnNqyFk7Gs6TANp/exec",
     "MOOTA_TOKEN": "L533Nt1k"

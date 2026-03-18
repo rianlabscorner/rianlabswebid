@@ -243,7 +243,23 @@
         } catch (e) { }
         try {
             if (!window.__RIAN_SYNC__ && typeof window.fetch === 'function') {
-                var _syncStorageKey = 'cepat_sync_state_v1';
+                var _syncStorageKey = 'rian_sync_state_v1';
+                var _isCachable = function (k) {
+                    try {
+                        if (!k) return false;
+                        if (k === 'rian_global_settings' ||
+                            k === 'rian_public_products' ||
+                            k === 'rian_public_catalog' ||
+                            k === 'rian_affiliate' ||
+                            k.indexOf('rian_page_') === 0 ||
+                            k.indexOf('rian_product_') === 0 ||
+                            k.indexOf('rian_dashboard_data_') === 0 ||
+                            k.indexOf('rian_dashboard_data') === 0) {
+                            return true;
+                        }
+                    } catch (e) { }
+                    return false;
+                };
                 var _ls = function () { try { return window.localStorage; } catch (e) { return null; } };
                 var _readSyncLocal = function () {
                     var ls = _ls();
@@ -264,15 +280,7 @@
                     }
                     for (var j = 0; j < keys.length; j++) {
                         var k = keys[j];
-                        if (!k) continue;
-                        if (k === 'cepat_global_settings' ||
-                            k === 'cepat_public_products' ||
-                            k === 'cepat_public_catalog' ||
-                            k === 'melimpah_global_settings' ||
-                            k.indexOf('cepat_page_') === 0 ||
-                            k.indexOf('cepat_product_') === 0 ||
-                            k.indexOf('cepat_dashboard_data_') === 0 ||
-                            k.indexOf('cepat_dashboard_data') === 0) {
+                        if (_isCachable(k)) {
                             try { ls.removeItem(k); } catch (e) { }
                         }
                     }
@@ -316,12 +324,12 @@
                 var _notify = function (st) {
                     try {
                         if (typeof BroadcastChannel !== 'undefined') {
-                            var ch = new BroadcastChannel('cepat_sync');
+                            var ch = new BroadcastChannel('rian_sync');
                             ch.postMessage({ type: 'sync', state: st || null });
                             try { ch.close(); } catch (e) { }
                         }
                     } catch (e) { }
-                    try { window.dispatchEvent(new CustomEvent('cepat:sync', { detail: st || null })); } catch (e) { }
+                    try { window.dispatchEvent(new CustomEvent('rian:sync', { detail: st || null })); } catch (e) { }
                 };
                 var _checkOnce = async function () {
                     var remote = await _fetchSyncState();
@@ -378,10 +386,17 @@
                     });
                     try {
                         if (typeof BroadcastChannel !== 'undefined') {
-                            var bc = new BroadcastChannel('cepat_sync');
-                            bc.onmessage = function () { _checkOnce(); };
+                            var bc = new BroadcastChannel('rian_sync');
+                            bc.onmessage = function (e) {
+                                if (e.data && e.data.type === 'sync') {
+                                    if (_shouldReloadOnSync()) location.reload();
+                                }
+                            };
                         }
                     } catch (e) { }
+                    window.addEventListener('rian:sync', function () {
+                        if (_shouldReloadOnSync()) location.reload();
+                    });
                 }
             }
         } catch (e) { }

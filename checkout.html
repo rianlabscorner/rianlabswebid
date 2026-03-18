@@ -12,7 +12,7 @@
 
     <script>
         (function() {
-            const CACHE_KEY = 'cepat_global_settings';
+            const CACHE_KEY = 'rian_global_settings';
             const CACHE_AGE = 60 * 60 * 1000; 
 
             window.setMeta = (attrName, attrValue, content) => {
@@ -435,8 +435,8 @@
     <script>
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const ref = urlParams.get('ref');
-            if(ref) { localStorage.setItem('cepat_affiliate', ref); }
+        const ref = urlParams.get('ref');
+        if(ref) { localStorage.setItem('rian_affiliate', ref); }
         })();
     </script>
 
@@ -465,9 +465,9 @@
         const productId = urlParams.get('id');
         
         const ref = urlParams.get('ref') || urlParams.get('aff_id');
-        if(ref) { localStorage.setItem('cepat_affiliate', ref); }
+        if(ref) { localStorage.setItem('rian_affiliate', ref); }
 
-        const PRODUCT_CACHE_KEY = 'cepat_product_' + productId;
+        const PRODUCT_CACHE_KEY = 'rian_product_' + productId;
 
         function selectPayment(method) { selectedPayment = method; }
 

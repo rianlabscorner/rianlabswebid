@@ -267,9 +267,9 @@
                                 user: d.data.user,
                                 affiliate_pixels: d.data.affiliate_pixels
                             };
-                            localStorage.setItem('cepat_dashboard_data_' + r.data.email, JSON.stringify(combined));
+                            localStorage.setItem('rian_dashboard_data_' + r.data.email, JSON.stringify(combined));
                             if (d.data.settings) {
-                                localStorage.setItem('cepat_global_settings', JSON.stringify({ data: d.data.settings, time: Date.now() }));
+                                localStorage.setItem('rian_global_settings', JSON.stringify({ data: d.data.settings, time: Date.now() }));
                             }
                         }
                     })

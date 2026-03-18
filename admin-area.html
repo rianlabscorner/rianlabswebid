@@ -27,7 +27,7 @@
         }
 
         (function() {
-            const CACHE_KEY = 'cepat_global_settings';
+            const CACHE_KEY = 'rian_global_settings';
             const CACHE_AGE = 60 * 60 * 1000; 
 
             function applyGlobalSettings(data) {
@@ -159,59 +159,61 @@
         .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased relative h-screen w-screen overflow-hidden">
+<body class="bg-[#f8fafc] text-slate-800 antialiased relative h-screen w-screen overflow-hidden selection:bg-indigo-100 selection:text-indigo-900">
 
     <div id="toast-container"></div>
 
     <!-- LOGIN OVERLAY -->
-    <div id="login-overlay" class="fixed inset-0 z-[200] flex items-center justify-center p-4 overflow-hidden bg-slate-50">
-        <!-- Abstract Background -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-indigo-200/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob"></div>
-            <div class="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-emerald-100/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-2000"></div>
+    <div id="login-overlay" class="fixed inset-0 z-[200] flex items-center justify-center p-4 overflow-hidden bg-[#f8fafc]">
+        <!-- Modern Abstract Background -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-50 rounded-full blur-[120px] opacity-70 animate-pulse"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-emerald-50 rounded-full blur-[120px] opacity-50 animate-pulse" style="animation-delay: 2s"></div>
         </div>
 
-        <div class="w-full max-w-md bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/50 p-8 md:p-12 relative z-10 fade-in-up">
-            <div class="text-center mb-10">
-                <img id="login-logo-img" class="w-24 h-24 object-contain mx-auto mb-6 hidden transition-all duration-500 hover:scale-110" src="" alt="Logo">
-                <div id="login-logo-icon" class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-200 transition-all duration-500 hover:rotate-12 hover:scale-110">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+        <div class="w-full max-w-md bg-white/70 backdrop-blur-2xl rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-white/50 p-10 md:p-12 relative z-10 fade-in-up">
+            <div class="text-center mb-12">
+                <div class="relative inline-block mb-8">
+                    <img id="login-logo-img" class="w-24 h-24 object-contain mx-auto hidden transition-all duration-500 hover:scale-110" src="" alt="Logo">
+                    <div id="login-logo-icon" class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl shadow-indigo-200 transition-all duration-500 hover:rotate-12 hover:scale-110">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-white"></i>
+                    </div>
                 </div>
-                <h1 class="text-2xl font-bold text-slate-900 mb-2 tracking-tight">Welcome Back!</h1>
-                <p class="text-slate-500 text-sm font-medium">Login to manage <span class="dyn-site-name font-bold text-indigo-600">Rian Labs</span></p>
+                <h1 class="text-3xl font-black text-slate-900 mb-3 tracking-tight">Admin Console</h1>
+                <p class="text-slate-500 text-sm font-bold uppercase tracking-widest opacity-60">Manage <span class="dyn-site-name text-indigo-600">Rian Labs</span></p>
             </div>
 
-            <form id="form-login" class="space-y-5">
+            <form id="form-login" class="space-y-6">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-2 ml-1">EMAIL ADDRESS</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">ADMIN EMAIL</label>
                     <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                        <div class="absolute inset-y-0 left-0 pl-5 flex items-center text-slate-400 group-focus-within:text-indigo-600 transition-colors">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </div>
-                        <input type="email" id="adm-email" class="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all font-medium text-slate-700" placeholder="admin@example.com" required>
+                        <input type="email" id="adm-email" class="w-full pl-14 pr-6 py-4.5 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300" placeholder="admin@rianlabs.id" required>
                     </div>
                 </div>
                 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-2 ml-1">PASSWORD</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">SECRET KEY</label>
                     <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                        <div class="absolute inset-y-0 left-0 pl-5 flex items-center text-slate-400 group-focus-within:text-indigo-600 transition-colors">
                             <i data-lucide="lock" class="w-5 h-5"></i>
                         </div>
-                        <input type="password" id="adm-pass" class="w-full pl-12 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all font-medium text-slate-700" placeholder="••••••••" required>
-                        <button type="button" onclick="togglePass()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-indigo-600 transition-colors">
+                        <input type="password" id="adm-pass" class="w-full pl-14 pr-14 py-4.5 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300" placeholder="••••••••" required>
+                        <button type="button" onclick="togglePass()" class="absolute inset-y-0 right-0 pr-5 flex items-center text-slate-400 hover:text-indigo-600 transition-colors">
                             <i data-lucide="eye" id="eye-icon" class="w-5 h-5"></i>
                         </button>
                     </div>
                 </div>
 
-                <button type="submit" id="btn-login" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:shadow-indigo-300 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 mt-4">
-                    LOGIN DASHBOARD
+                <button type="submit" id="btn-login" class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:shadow-indigo-200 hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 mt-6">
+                    Unlock Dashboard
                 </button>
             </form>
 
-            <div class="mt-8 text-center">
-                <a href="index.html" class="text-xs font-semibold text-slate-400 hover:text-indigo-600 transition-colors">Back to Homepage</a>
+            <div class="mt-12 text-center">
+                <a href="index.html" class="text-[10px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase tracking-widest">Back to Site</a>
             </div>
         </div>
     </div>
@@ -221,126 +223,143 @@
         
         <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/40 z-40 md:hidden backdrop-blur-sm transition-opacity"></div>
 
-        <aside id="sidebar" class="w-72 bg-white border-r border-slate-200 flex flex-col h-full flex-shrink-0 z-50 transition-transform duration-500 ease-in-out">
-            <div class="h-24 flex items-center px-8 border-b border-slate-100 bg-slate-50/50 backdrop-blur-sm">
+        <aside id="sidebar" class="w-80 bg-white border-r border-slate-100 flex flex-col h-full flex-shrink-0 z-50 transition-transform duration-500 ease-in-out">
+            <div class="h-24 flex items-center px-8 border-b border-slate-50 bg-slate-50/30 backdrop-blur-md">
                 <div class="flex items-center gap-4 w-full">
-                    <img id="sidebar-logo-img" class="h-10 w-auto object-contain hidden transition-all duration-300 hover:scale-105" src="" alt="Logo">
-                    <div id="sidebar-logo-icon" class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 transition-transform hover:rotate-12">
-                        <i data-lucide="command" class="w-6 h-6"></i>
+                    <div class="relative">
+                        <img id="sidebar-logo-img" class="h-10 w-auto object-contain hidden transition-all duration-300 hover:scale-105" src="" alt="Logo">
+                        <div id="sidebar-logo-icon" class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-xl shadow-indigo-100 transition-transform hover:rotate-12">
+                            <i data-lucide="command" class="w-6 h-6"></i>
+                        </div>
                     </div>
-                    <span class="font-extrabold text-xl text-slate-800 tracking-tight dyn-site-name truncate">SPOTADMIN</span>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-black text-lg text-slate-900 tracking-tighter dyn-site-name truncate leading-none uppercase">SPOTADMIN</span>
+                        <span class="text-[10px] font-bold text-indigo-600 tracking-widest uppercase mt-1 opacity-60">Control Panel</span>
+                    </div>
                 </div>
                 <button onclick="toggleSidebar()" class="md:hidden ml-auto text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
 
-            <nav class="p-4 space-y-1 flex-1 overflow-y-auto custom-scroll">
-                <div class="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 mt-2">Main Menu</div>
-                <button onclick="switchTab('orders')" id="nav-orders" class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+            <nav class="p-6 space-y-1.5 flex-1 overflow-y-auto custom-scroll">
+                <div class="px-4 py-2 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-4 mt-2">Core Access</div>
+                <button onclick="switchTab('orders')" id="nav-orders" class="nav-item active w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Overview
                 </button>
-                <button onclick="switchTab('admin-orders')" id="nav-admin-orders" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm text-left">
-                    <i data-lucide="clipboard-list" class="w-5 h-5"></i> Admin Orders
+                <button onclick="switchTab('admin-orders')" id="nav-admin-orders" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-left">
+                    <i data-lucide="clipboard-list" class="w-5 h-5"></i> Orders
                 </button>
-                <button onclick="switchTab('members')" id="nav-members" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="users" class="w-5 h-5"></i> Data Member
+                <button onclick="switchTab('members')" id="nav-members" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="users" class="w-5 h-5"></i> Members
                 </button>
-                <button onclick="switchTab('products')" id="nav-products" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="package" class="w-5 h-5"></i> Produk & Layanan
+                <button onclick="switchTab('products')" id="nav-products" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="package" class="w-5 h-5"></i> Products
                 </button>
-                <button onclick="switchTab('pages')" id="nav-pages" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="file-text" class="w-5 h-5"></i> Halaman CMS
+                <button onclick="switchTab('pages')" id="nav-pages" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="file-text" class="w-5 h-5"></i> CMS Pages
                 </button>
-                <button onclick="switchTab('media')" id="nav-media" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="image" class="w-5 h-5"></i> Media Center
+                <button onclick="switchTab('media')" id="nav-media" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="image" class="w-5 h-5"></i> Media
                 </button>
                 
-                <div class="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 mt-6">System</div>
-                <button onclick="switchTab('settings')" id="nav-settings" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm">
-                    <i data-lucide="settings" class="w-5 h-5"></i> Pengaturan
+                <div class="px-4 py-2 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-4 mt-8">Configuration</div>
+                <button onclick="switchTab('settings')" id="nav-settings" class="nav-item w-full flex items-center gap-4 px-5 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">
+                    <i data-lucide="settings" class="w-5 h-5"></i> Settings
                 </button>
             </nav>
 
-            <div class="p-4 border-t border-slate-100 bg-slate-50/50">
-                <div class="flex items-center gap-3 mb-4 px-2">
-                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-lg">A</div>
+            <div class="p-6 border-t border-slate-50 bg-slate-50/30">
+                <div class="flex items-center gap-4 mb-6 px-2">
+                    <div class="w-11 h-11 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-black text-lg border border-indigo-200">A</div>
                     <div class="overflow-hidden">
-                        <p id="admin-name" class="font-bold text-slate-700 text-sm truncate">Admin</p>
-                        <p class="text-xs text-slate-400">Master Control</p>
+                        <p id="admin-name" class="font-black text-slate-900 text-sm truncate uppercase tracking-tighter">Admin</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Superuser</p>
                     </div>
                 </div>
-                <button onclick="logout()" class="w-full flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-600 hover:bg-red-50 hover:text-red-600 hover:border-red-100 py-2.5 rounded-xl font-semibold text-xs transition-all">
+                <button onclick="logout()" class="w-full flex items-center justify-center gap-3 bg-white border border-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-600 hover:border-red-100 py-3.5 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm">
                     <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
                 </button>
             </div>
         </aside>
 
         <main class="flex-1 overflow-y-auto h-full bg-[#f8fafc] relative">
-            <header class="sticky top-0 bg-[#f8fafc]/90 backdrop-blur-md z-30 px-6 md:px-10 py-5 flex justify-between items-center border-b border-slate-200/50">
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleSidebar()" class="md:hidden p-2 bg-white rounded-lg shadow-sm border border-slate-200 text-slate-600"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            <header class="sticky top-0 bg-[#f8fafc]/80 backdrop-blur-xl z-30 px-8 md:px-12 py-6 flex justify-between items-center border-b border-slate-100">
+                <div class="flex items-center gap-6">
+                    <button onclick="toggleSidebar()" class="md:hidden p-3 bg-white rounded-xl shadow-sm border border-slate-100 text-slate-600"><i data-lucide="menu" class="w-6 h-6"></i></button>
                     <div>
-                        <h2 id="tab-title" class="text-2xl font-bold text-slate-800 tracking-tight">Dashboard</h2>
-                        <p class="text-xs text-slate-400 font-medium hidden sm:block">Overview & Statistics</p>
+                        <h2 id="tab-title" class="text-3xl font-black text-slate-900 tracking-tighter uppercase leading-none">Dashboard</h2>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-2 hidden sm:block">System Intelligence Overview</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <span id="sync-status" class="text-[10px] bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hidden animate-pulse font-bold tracking-wide uppercase border border-indigo-100">Syncing...</span>
-                    <a href="index.html" target="_blank" class="hidden sm:flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-medium text-sm transition-colors bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
-                        <i data-lucide="external-link" class="w-4 h-4"></i> Website
+                <div class="flex items-center gap-4">
+                    <span id="sync-status" class="text-[10px] bg-indigo-50 text-indigo-600 px-4 py-1.5 rounded-full hidden animate-pulse font-black tracking-widest uppercase border border-indigo-100">Syncing...</span>
+                    <a href="index.html" target="_blank" class="hidden sm:flex items-center gap-3 text-slate-500 hover:text-indigo-600 font-black text-[10px] uppercase tracking-widest transition-all bg-white px-5 py-3 rounded-2xl border border-slate-100 shadow-sm">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> Live Site
                     </a>
-                    <button onclick="forceSync()" class="p-2.5 bg-white text-slate-400 hover:text-indigo-600 border border-slate-200 rounded-xl shadow-sm transition-all hover:shadow-md" title="Refresh Data">
+                    <button onclick="forceSync()" class="p-3 bg-white text-slate-400 hover:text-indigo-600 border border-slate-100 rounded-2xl shadow-sm transition-all hover:shadow-xl hover:-translate-y-0.5" title="Refresh Data">
                         <i data-lucide="refresh-cw" class="w-4 h-4"></i>
                     </button>
                 </div>
             </header>
 
-            <div class="p-6 md:p-10 max-w-7xl mx-auto pb-20">
+            <div class="p-8 md:p-12 max-w-[1600px] mx-auto pb-32">
                 
                 <!-- DASHBOARD TAB -->
                 <div id="tab-orders" class="tab-content active">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-6 hover:shadow-md transition-all">
-                            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm">
-                                <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-50 flex items-center gap-8 hover:shadow-xl transition-all duration-500 group">
+                            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="shopping-bag" class="w-10 h-10"></i>
                             </div>
                             <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Pesanan</p>
-                                <h3 id="stat-orders" class="text-3xl font-bold text-slate-800 tracking-tight">0</h3>
+                                <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-2">Total Orders</p>
+                                <h3 id="stat-orders" class="text-4xl font-black text-slate-900 tracking-tighter">0</h3>
                             </div>
                         </div>
-                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-6 hover:shadow-md transition-all">
-                            <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm">
-                                <i data-lucide="wallet" class="w-8 h-8"></i>
+                        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-50 flex items-center gap-8 hover:shadow-xl transition-all duration-500 group">
+                            <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="wallet" class="w-10 h-10"></i>
                             </div>
                             <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Pendapatan</p>
-                                <h3 id="stat-rev" class="text-3xl font-bold tracking-tight text-emerald-600">Rp 0</h3>
+                                <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-2">Total Revenue</p>
+                                <h3 id="stat-rev" class="text-4xl font-black tracking-tighter text-emerald-600">Rp 0</h3>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-50 flex items-center gap-8 hover:shadow-xl transition-all duration-500 group">
+                            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                                <i data-lucide="users" class="w-10 h-10"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-2">Active Members</p>
+                                <h3 id="stat-members-count" class="text-4xl font-black tracking-tighter text-indigo-600">0</h3>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
-                            <h3 class="font-bold text-slate-700 text-lg">Transaksi Terbaru</h3>
-                            <button class="text-xs font-bold text-indigo-600 hover:text-indigo-700">LIHAT SEMUA</button>
+                    <div class="bg-white rounded-[3rem] shadow-sm border border-slate-50 overflow-hidden">
+                        <div class="px-10 py-8 border-b border-slate-50 flex justify-between items-center bg-slate-50/20">
+                            <div>
+                                <h3 class="font-black text-slate-900 text-xl tracking-tighter uppercase">Recent Transactions</h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Last 10 orders</p>
+                            </div>
+                            <button onclick="switchTab('admin-orders')" class="text-[10px] font-black text-indigo-600 hover:text-indigo-800 uppercase tracking-widest transition-colors bg-indigo-50 px-5 py-2.5 rounded-xl">View Full List</button>
                         </div>
                         <div class="overflow-x-auto custom-scroll">
-                            <table class="w-full text-left text-sm min-w-[700px]">
-                                <thead class="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
+                            <table class="w-full text-left text-sm min-w-[800px]">
+                                <thead class="bg-slate-50/50 text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-50">
                                     <tr>
-                                        <th class="px-8 py-5">Invoice</th>
-                                        <th class="px-8 py-5">Customer</th>
-                                        <th class="px-8 py-5">Produk</th>
-                                        <th class="px-8 py-5">Status</th>
-                                        <th class="px-8 py-5 text-right">Aksi</th>
+                                        <th class="px-10 py-6">Invoice</th>
+                                        <th class="px-10 py-6">Customer</th>
+                                        <th class="px-10 py-6">Product</th>
+                                        <th class="px-10 py-6">Status</th>
+                                        <th class="px-10 py-6 text-right">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="list-orders" class="divide-y divide-slate-100"></tbody>
+                                <tbody id="list-orders" class="divide-y divide-slate-50 font-bold text-slate-600"></tbody>
                             </table>
                         </div>
-                        <div class="p-6 border-t border-slate-100 text-center hidden" id="more-orders-container">
-                            <button onclick="loadMoreOrders()" id="btn-more-orders" class="text-xs font-bold text-indigo-600 hover:text-indigo-700 uppercase tracking-wider bg-indigo-50 hover:bg-indigo-100 px-6 py-3 rounded-xl transition-all">
-                                Muat Lebih Banyak
+                        <div class="p-8 border-t border-slate-50 text-center hidden" id="more-orders-container">
+                            <button onclick="loadMoreOrders()" id="btn-more-orders" class="text-[10px] font-black text-indigo-600 hover:text-indigo-800 uppercase tracking-[0.2em] bg-indigo-50 hover:bg-indigo-100 px-8 py-4 rounded-2xl transition-all shadow-sm">
+                                Load More Data
                             </button>
                         </div>
                     </div>
@@ -353,28 +372,31 @@
 
                 <!-- MEMBERS TAB -->
                 <div id="tab-members" class="tab-content">
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
-                            <h3 class="font-bold text-slate-700 text-lg">Data Member</h3>
+                    <div class="bg-white rounded-[3rem] shadow-sm border border-slate-50 overflow-hidden">
+                        <div class="px-10 py-8 border-b border-slate-50 flex justify-between items-center bg-slate-50/20">
+                            <div>
+                                <h3 class="font-black text-slate-900 text-xl tracking-tighter uppercase">User Database</h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Total members: <span id="count-users">0</span></p>
+                            </div>
                         </div>
                         <div class="overflow-x-auto custom-scroll">
-                            <table class="w-full text-left text-sm min-w-[700px]" id="list-members">
-                                <thead class="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
+                            <table class="w-full text-left text-sm min-w-[900px]" id="list-members">
+                                <thead class="bg-slate-50/50 text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-50">
                                     <tr>
-                                        <th class="px-8 py-5">ID Member</th>
-                                        <th class="px-8 py-5">Nama</th>
-                                        <th class="px-8 py-5">Email</th>
-                                        <th class="px-8 py-5">Role</th>
-                                        <th class="px-8 py-5">Status</th>
-                                        <th class="px-8 py-5">Tanggal Bergabung</th>
+                                        <th class="px-10 py-6">Member ID</th>
+                                        <th class="px-10 py-6">Full Name</th>
+                                        <th class="px-10 py-6">Email</th>
+                                        <th class="px-10 py-6">Role</th>
+                                        <th class="px-10 py-6">Status</th>
+                                        <th class="px-10 py-6">Joined Date</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100"></tbody>
+                                <tbody class="divide-y divide-slate-50 font-bold text-slate-600"></tbody>
                             </table>
                         </div>
-                        <div class="p-6 border-t border-slate-100 text-center hidden" id="more-members-container">
-                            <button onclick="loadMoreMembers()" id="btn-more-members" class="text-xs font-bold text-indigo-600 hover:text-indigo-700 uppercase tracking-wider bg-indigo-50 hover:bg-indigo-100 px-6 py-3 rounded-xl transition-all">
-                                Muat Lebih Banyak
+                        <div class="p-8 border-t border-slate-50 text-center hidden" id="more-members-container">
+                            <button onclick="loadMoreMembers()" id="btn-more-members" class="text-[10px] font-black text-indigo-600 hover:text-indigo-800 uppercase tracking-[0.2em] bg-indigo-50 hover:bg-indigo-100 px-8 py-4 rounded-2xl transition-all shadow-sm">
+                                Load More Members
                             </button>
                         </div>
                     </div>
@@ -382,34 +404,40 @@
 
                 <!-- PRODUCTS TAB -->
                 <div id="tab-products" class="tab-content">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-                        <h3 class="font-bold text-slate-500 uppercase text-xs tracking-widest">Katalog Produk (<span id="count-prod">0</span>)</h3>
-                        <button onclick="openProdModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:shadow-indigo-300 transition-all text-xs uppercase tracking-wide">
-                            <i data-lucide="plus" class="w-4 h-4"></i> Tambah Produk
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
+                        <div>
+                            <h3 class="font-black text-slate-900 text-xl tracking-tighter uppercase">Product Catalog</h3>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Manage your digital inventory</p>
+                        </div>
+                        <button onclick="openProdModal()" class="flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-1 active:scale-95 transition-all">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Create New Product
                         </button>
                     </div>
-                    <div id="list-products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                    <div id="list-products" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
                 </div>
 
                 <!-- PAGES TAB -->
                 <div id="tab-pages" class="tab-content">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-                        <h3 class="font-bold text-slate-500 uppercase text-xs tracking-widest">Halaman CMS</h3>
-                        <button onclick="openPageModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:shadow-indigo-300 transition-all text-xs uppercase tracking-wide">
-                            <i data-lucide="plus" class="w-4 h-4"></i> Buat Halaman
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
+                        <div>
+                            <h3 class="font-black text-slate-900 text-xl tracking-tighter uppercase">CMS Pages</h3>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Landing pages & dynamic content</p>
+                        </div>
+                        <button onclick="openPageModal()" class="flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-1 active:scale-95 transition-all">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Build New Page
                         </button>
                     </div>
-                    <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="bg-white rounded-[3rem] border border-slate-50 shadow-sm overflow-hidden">
                         <div class="overflow-x-auto custom-scroll">
-                            <table class="w-full text-left text-sm min-w-[700px] table-fixed">
-                                <thead class="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
+                            <table class="w-full text-left text-sm min-w-[800px] table-fixed">
+                                <thead class="bg-slate-50/50 text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-50">
                                     <tr>
-                                        <th class="px-8 py-5 w-1/3">Judul Halaman</th>
-                                        <th class="px-8 py-5 w-1/2">URL Slug</th>
-                                        <th class="px-8 py-5 w-1/6 text-right">Aksi</th>
+                                        <th class="px-10 py-6 w-1/3">Page Title</th>
+                                        <th class="px-10 py-6 w-1/2">Public Slug</th>
+                                        <th class="px-10 py-6 w-1/6 text-right">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="list-pages" class="divide-y divide-slate-100"></tbody>
+                                <tbody id="list-pages" class="divide-y divide-slate-50 font-bold text-slate-600"></tbody>
                             </table>
                         </div>
                     </div>
@@ -417,51 +445,57 @@
 
                 <!-- MEDIA TAB -->
                 <div id="tab-media" class="tab-content">
-                    <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm mb-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-bl-[10rem] -mr-10 -mt-10 pointer-events-none"></div>
+                    <div class="bg-slate-900 p-10 md:p-16 rounded-[3.5rem] shadow-2xl mb-12 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none group-hover:bg-indigo-500/20 transition-all duration-700"></div>
                         <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Media Center</h3>
-                            <p class="text-slate-500 text-sm mb-8 max-w-md">Upload gambar atau file ke CDN ImageKit untuk digunakan di halaman CMS atau produk.</p>
-                            
-                            <div class="flex flex-col md:flex-row gap-4 items-center max-w-2xl">
-                                <div class="w-full relative group">
-                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                        <i data-lucide="upload-cloud" class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors"></i>
-                                    </div>
-                                    <input type="file" id="media-file" class="w-full pl-12 p-4 border border-slate-200 rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm text-slate-600 file:hidden cursor-pointer hover:bg-white">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white border border-white/10">
+                                    <i data-lucide="upload-cloud" class="w-6 h-6"></i>
                                 </div>
-                                <button onclick="uploadMedia()" id="btn-upload" class="w-full md:w-auto bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-600 hover:shadow-emerald-300 transition-all text-xs uppercase tracking-wide whitespace-nowrap">
-                                    Upload File
+                                <h3 class="text-3xl font-black text-white tracking-tighter uppercase">Media Engine</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-10 max-w-lg leading-relaxed font-medium uppercase tracking-widest opacity-80">Sync your visual assets with ImageKit CDN infrastructure.</p>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center max-w-3xl">
+                                <div class="w-full relative group/input">
+                                    <input type="file" id="media-file" class="w-full pl-6 pr-6 py-5 bg-white/5 border border-white/10 rounded-[1.5rem] outline-none focus:border-indigo-500/50 transition-all text-xs font-black text-slate-300 file:hidden cursor-pointer hover:bg-white/10 uppercase tracking-widest">
+                                    <div class="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-500 uppercase tracking-widest pointer-events-none">Browse File</div>
+                                </div>
+                                <button onclick="uploadMedia()" id="btn-upload" class="w-full md:w-auto bg-indigo-600 text-white px-10 py-5 rounded-[1.5rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl shadow-indigo-900/40 hover:bg-indigo-500 hover:-translate-y-1 active:scale-95 transition-all whitespace-nowrap">
+                                    Upload to CDN
                                 </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div id="media-res-box" class="hidden bg-emerald-50/50 border border-emerald-100 p-6 md:p-8 rounded-[2rem] fade-in-up">
-                        <div class="flex items-center gap-3 mb-4 text-emerald-700">
-                            <i data-lucide="check-circle" class="w-5 h-5"></i>
-                            <span class="font-bold text-sm">Upload Berhasil!</span>
+                    <div id="media-res-box" class="hidden bg-emerald-500/10 border border-emerald-500/20 p-8 rounded-[3rem] fade-in-up mb-12">
+                        <div class="flex items-center gap-4 mb-6 text-emerald-400">
+                            <i data-lucide="check-circle" class="w-6 h-6"></i>
+                            <span class="font-black text-[10px] uppercase tracking-[0.2em]">Deployment Successful!</span>
                         </div>
-                        <div class="flex flex-col md:flex-row gap-3">
-                            <input type="text" id="media-url-res" readonly class="w-full p-4 bg-white border border-emerald-200 rounded-xl font-mono text-xs text-emerald-800 focus:outline-none">
-                            <button onclick="copyLink()" class="w-full md:w-auto bg-emerald-600 text-white px-8 rounded-xl font-bold text-xs uppercase hover:bg-emerald-700 transition-colors">
-                                Copy Link
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input type="text" id="media-url-res" readonly class="w-full px-6 py-5 bg-white border border-emerald-100 rounded-2xl font-mono text-xs text-emerald-800 focus:outline-none shadow-sm">
+                            <button onclick="copyLink()" class="w-full md:w-auto bg-emerald-600 text-white px-10 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-100">
+                                Copy URL
                             </button>
                         </div>
                     </div>
 
                     <!-- Media Gallery List -->
-                    <div class="mt-10 pt-10 border-t border-slate-100">
-                        <div class="flex items-center justify-between mb-6">
-                             <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                                <i data-lucide="image" class="w-5 h-5 text-indigo-500"></i> Riwayat Upload (Terbaru)
-                             </h3>
-                             <button onclick="loadMediaFiles()" class="text-indigo-600 font-bold text-xs uppercase hover:text-indigo-800 transition-colors flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-lg">
-                                 <i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh
+                    <div class="mt-16 pt-16 border-t border-slate-100">
+                        <div class="flex items-center justify-between mb-10">
+                             <div>
+                                <h3 class="text-xl font-black text-slate-900 tracking-tighter uppercase flex items-center gap-3">
+                                    <i data-lucide="image" class="w-6 h-6 text-indigo-600"></i> CDN Assets History
+                                </h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Recently uploaded files</p>
+                             </div>
+                             <button onclick="loadMediaFiles()" class="text-[10px] font-black text-indigo-600 uppercase tracking-widest hover:text-indigo-800 transition-colors flex items-center gap-3 bg-indigo-50 px-6 py-3 rounded-xl border border-indigo-100">
+                                 <i data-lucide="refresh-cw" class="w-4 h-4"></i> Refresh Engine
                              </button>
                         </div>
-                        <div id="media-gallery" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                             <div class="col-span-full text-center py-10 text-slate-400 text-sm italic">Klik Refresh untuk memuat data...</div>
+                        <div id="media-gallery" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                             <div class="col-span-full text-center py-20 text-slate-300 text-[10px] font-black uppercase tracking-[0.3em] italic">Initialize database to load assets...</div>
                         </div>
                     </div>
                 </div>
@@ -469,89 +503,101 @@
                 <!-- SETTINGS TAB -->
                 <div id="tab-settings" class="tab-content">
                     <!-- Cloudflare Section -->
-                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-10 rounded-[2.5rem] border border-orange-100 shadow-sm mb-10">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-orange-200/50 pb-6 mb-8 gap-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-amber-500">
-                                    <i data-lucide="cloud-lightning" class="w-6 h-6"></i>
+                    <div class="bg-gradient-to-br from-indigo-900 to-slate-900 p-10 md:p-12 rounded-[3.5rem] shadow-2xl mb-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-10 mb-10 gap-8">
+                            <div class="flex items-center gap-6">
+                                <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-[1.5rem] flex items-center justify-center text-amber-400 border border-white/10">
+                                    <i data-lucide="cloud-lightning" class="w-8 h-8"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-bold text-slate-800">Cloudflare Cache</h3>
-                                    <p class="text-xs text-slate-500 font-medium">Performance Management</p>
+                                    <h3 class="text-2xl font-black text-white tracking-tighter uppercase leading-none">Cloudflare Integration</h3>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-3">Network performance & cache management</p>
                                 </div>
                             </div>
-                            <button onclick="triggerPurgeCache()" id="btn-purge" class="w-full sm:w-auto bg-amber-500 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase shadow-lg shadow-amber-200 hover:bg-amber-600 hover:shadow-amber-300 transition-all flex items-center justify-center gap-2">
-                                <i data-lucide="eraser" class="w-4 h-4"></i> Purge Cache
+                            <button onclick="triggerPurgeCache()" id="btn-purge" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/10 px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 backdrop-blur-sm">
+                                <i data-lucide="eraser" class="w-4 h-4"></i> Purge All Cache
                             </button>
                         </div>
-                        <form id="form-cf" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form id="form-cf" class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1 mb-2 block">Zone ID</label>
-                                <input type="text" id="set-cf-zone" class="w-full p-4 bg-white border border-orange-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-400/20 font-mono text-xs shadow-sm">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">ZONE IDENTIFIER</label>
+                                <input type="text" id="set-cf-zone" class="w-full p-5 bg-white/5 border border-white/10 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-xs text-white shadow-inner" placeholder="Enter Cloudflare Zone ID">
                             </div>
                             <div>
-                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1 mb-2 block">API Token</label>
-                                <input type="password" id="set-cf-token" class="w-full p-4 bg-white border border-orange-100 rounded-xl outline-none focus:ring-2 focus:ring-amber-400/20 font-mono text-xs shadow-sm">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">AUTHORIZATION TOKEN</label>
+                                <input type="password" id="set-cf-token" class="w-full p-5 bg-white/5 border border-white/10 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-xs text-white shadow-inner" placeholder="••••••••••••••••">
                             </div>
-                            <button type="submit" class="md:col-span-2 w-full bg-slate-900 text-white p-4 rounded-xl font-bold uppercase text-xs shadow-xl hover:bg-slate-800 transition-all mt-2">Simpan Konfigurasi Cloudflare</button>
+                            <button type="submit" class="md:col-span-2 w-full bg-white text-slate-900 p-5 rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.3em] shadow-2xl hover:bg-indigo-50 transition-all mt-4 active:scale-[0.98]">Update Network Config</button>
                         </form>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <!-- Branding Section -->
-                        <div class="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm h-full">
-                            <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                                <i data-lucide="palette" class="w-5 h-5 text-indigo-500"></i> Branding Web
-                            </h3>
-                            <form id="form-branding" class="space-y-5">
-                                <div>
-                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Nama Website</label>
-                                    <input type="text" id="set-site-name" placeholder="Misal: KelasJuara" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all text-sm font-medium">
+                        <div class="bg-white p-10 md:p-12 rounded-[3rem] border border-slate-50 shadow-sm h-full flex flex-col">
+                            <div class="flex items-center gap-4 mb-10">
+                                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center border border-indigo-100 shadow-sm">
+                                    <i data-lucide="palette" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Tagline</label>
-                                    <input type="text" id="set-site-tagline" placeholder="Misal: Platform Edukasi Terbaik" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all text-sm font-medium">
+                                    <h3 class="text-xl font-black text-slate-900 tracking-tighter uppercase leading-none">Identity Design</h3>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Visual brand management</p>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4">
+                            </div>
+                            <form id="form-branding" class="space-y-8 flex-1">
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Site Name</label>
+                                    <input type="text" id="set-site-name" placeholder="Ex: Rian Labs" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/5 transition-all text-sm font-bold text-slate-700">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Tagline / Mission</label>
+                                    <input type="text" id="set-site-tagline" placeholder="Ex: Excellence in Digital" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/5 transition-all text-sm font-bold text-slate-700">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div>
-                                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Logo URL</label>
-                                        <input type="text" id="set-logo" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all text-xs font-mono">
+                                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Logo Path (URL)</label>
+                                        <input type="text" id="set-logo" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-[10px] text-slate-500">
                                     </div>
                                     <div>
-                                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Favicon URL</label>
-                                        <input type="text" id="set-favicon" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all text-xs font-mono">
+                                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Favicon (URL)</label>
+                                        <input type="text" id="set-favicon" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-[10px] text-slate-500">
                                     </div>
                                 </div>
-                                <button type="submit" class="w-full bg-slate-800 text-white p-4 rounded-xl font-bold uppercase text-xs hover:bg-slate-900 transition-all mt-4 shadow-lg">Simpan Branding</button>
+                                <button type="submit" class="w-full bg-slate-900 text-white p-5 rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.3em] hover:bg-indigo-600 transition-all mt-6 shadow-xl active:scale-[0.98]">Save Visual Identity</button>
                             </form>
                         </div>
 
                         <!-- System API Section -->
-                        <div class="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm h-full">
-                            <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-3">
-                                <i data-lucide="server" class="w-5 h-5 text-emerald-500"></i> API Sistem
-                            </h3>
-                            <form id="form-sys" class="space-y-5">
-                                <div>
-                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Email Kontak</label>
-                                    <input type="email" id="set-email" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all font-mono text-xs">
+                        <div class="bg-white p-10 md:p-12 rounded-[3rem] border border-slate-50 shadow-sm h-full flex flex-col">
+                            <div class="flex items-center gap-4 mb-10">
+                                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center border border-emerald-100 shadow-sm">
+                                    <i data-lucide="server" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-emerald-600 uppercase tracking-wider ml-1 mb-2 block">Fonnte Token (WA)</label>
-                                    <input type="text" id="set-fonnte" class="w-full p-4 bg-emerald-50 border border-emerald-100 rounded-xl outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10 transition-all font-mono text-xs text-emerald-800">
+                                    <h3 class="text-xl font-black text-slate-900 tracking-tighter uppercase leading-none">Core Infrastructure</h3>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">API & communication keys</p>
+                                </div>
+                            </div>
+                            <form id="form-sys" class="space-y-8 flex-1">
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Primary Support Email</label>
+                                    <input type="email" id="set-email" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-xs text-slate-600">
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">WA Admin (08xxx)</label>
-                                    <input type="text" id="set-wa" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 transition-all font-mono text-sm">
+                                    <label class="text-[10px] font-black text-emerald-600 uppercase tracking-widest ml-1 mb-3 block">WhatsApp Messaging Token</label>
+                                    <input type="text" id="set-fonnte" class="w-full p-5 bg-emerald-50/30 border border-emerald-100 rounded-2xl outline-none focus:border-emerald-500 transition-all font-mono text-xs text-emerald-800">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Admin Phone (International)</label>
+                                    <input type="text" id="set-wa" placeholder="628123456789" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-sm text-slate-700 font-bold">
                                 </div>
 
-                                
-                                <div class="hidden">
-                                    <input type="text" id="set-ik-pub"><input type="text" id="set-ik-end">
-                                </div>
+                                <div class="hidden"><input type="text" id="set-ik-pub"><input type="text" id="set-ik-end"></div>
 
-                                <button type="submit" class="w-full bg-indigo-600 text-white p-4 rounded-xl font-bold uppercase text-xs mt-4 hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all">Update API Sistem</button>
-                                <button type="button" onclick="normalizeUsers()" class="w-full bg-emerald-600 text-white p-4 rounded-xl font-bold uppercase text-xs mt-2 hover:bg-emerald-700 shadow-lg shadow-emerald-200 transition-all">Sinkronisasi Kolom Users</button>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                                    <button type="submit" class="w-full bg-indigo-600 text-white p-5 rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.2em] hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98]">Commit API Changes</button>
+                                    <button type="button" onclick="normalizeUsers()" class="w-full bg-emerald-600 text-white p-5 rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.2em] hover:bg-emerald-700 shadow-xl shadow-emerald-100 transition-all active:scale-[0.98]">Repair DB Columns</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -563,44 +609,108 @@
     </div>
 
     <!-- MODAL CONFIRM -->
-    <div id="modal-confirm" class="fixed inset-0 bg-slate-900/60 z-[400] hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0">
-        <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-sm p-8 text-center transform transition-transform scale-95 border border-white/20" id="modal-confirm-content">
-            <div class="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="alert-circle" class="w-8 h-8"></i>
+    <div id="modal-confirm" class="fixed inset-0 z-[400] hidden items-center justify-center p-6 bg-slate-900/60 backdrop-blur-md transition-all duration-300 opacity-0">
+        <div class="bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl p-10 text-center transform scale-95 transition-all duration-300" id="modal-confirm-content">
+            <div class="w-20 h-20 bg-red-50 text-red-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
+                <i data-lucide="alert-triangle" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Konfirmasi</h3>
-            <p class="text-sm text-slate-500 mb-8 leading-relaxed" id="confirm-msg">Apakah anda yakin ingin melanjutkan tindakan ini?</p>
-            <div class="flex gap-3">
-                <button id="btn-confirm-cancel" class="flex-1 bg-slate-50 text-slate-600 hover:bg-slate-100 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors">Batal</button>
-                <button id="btn-confirm-ok" class="flex-1 bg-indigo-600 text-white hover:bg-indigo-700 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors shadow-lg shadow-indigo-200">Ya, Lanjut</button>
+            <h3 class="text-2xl font-black text-slate-900 mb-3 tracking-tighter uppercase">Are you sure?</h3>
+            <p id="confirm-msg" class="text-slate-500 text-sm font-medium mb-10 leading-relaxed uppercase tracking-widest opacity-80">This action will be deployed immediately and cannot be reverted.</p>
+            <div class="flex gap-4">
+                <button id="btn-confirm-cancel" class="flex-1 bg-slate-50 text-slate-500 py-4.5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-100 transition-all border border-slate-100">Abort</button>
+                <button id="btn-confirm-ok" class="flex-1 bg-red-600 text-white py-4.5 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-red-100 hover:bg-red-700 transition-all">Proceed</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL PRODUCT -->
-    <div id="modal-prod" class="fixed inset-0 bg-slate-900/70 hidden z-[300] items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white w-full max-w-2xl rounded-[2.5rem] p-8 md:p-10 shadow-2xl max-h-[90vh] overflow-y-auto custom-scroll relative">
-            <button onclick="closeModal('modal-prod')" class="absolute top-6 right-6 p-2 bg-slate-50 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="modal-prod" class="fixed inset-0 z-[300] hidden items-center justify-center p-6 bg-slate-900/60 backdrop-blur-md">
+        <div class="bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col relative transition-all duration-300">
+            <button onclick="closeModal('modal-prod')" class="absolute top-8 right-8 p-3 bg-slate-50 rounded-2xl text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all z-10 shadow-sm border border-slate-100"><i data-lucide="x" class="w-5 h-5"></i></button>
             
-            <h3 class="text-2xl font-bold mb-2 text-slate-800">Setup Produk</h3>
-            <p class="text-slate-500 text-sm mb-8">Kelola informasi produk dan akses materi.</p>
+            <div class="px-10 py-8 border-b border-slate-50 bg-slate-50/20 flex-shrink-0">
+                <h3 class="text-xl font-black text-slate-900 tracking-tighter uppercase leading-none">Product Configuration</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Manage your digital inventory details</p>
+            </div>
             
-            <form id="form-prod" class="space-y-5">
-                <input type="hidden" id="p-is-edit">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div class="p-10 overflow-y-auto custom-scroll flex-1">
+                <form id="form-prod" class="space-y-8">
+                    <input type="hidden" id="p-is-edit">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Product ID</label>
+                            <input type="text" id="p-id" placeholder="PRD-01" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-black text-slate-700 uppercase" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Price (Rp)</label>
+                            <input type="number" id="p-harga" placeholder="100000" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-black text-slate-700" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Affiliate Commission</label>
+                            <input type="number" id="p-commission" placeholder="0" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-black text-indigo-600">
+                        </div>
+                    </div>
+                    
                     <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">ID Produk</label>
-                        <input type="text" id="p-id" placeholder="PRD-01" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 transition-all font-bold text-slate-700" required>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Product Name</label>
+                        <input type="text" id="p-title" placeholder="Ex: Master Digital Marketing" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-bold text-slate-900" required>
                     </div>
                     <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Harga (Rp)</label>
-                        <input type="number" id="p-harga" placeholder="100000" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 transition-all font-bold text-slate-700" required>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Landing Page Path</label>
+                        <input type="text" id="p-lp" placeholder="p.html?s=promo" class="w-full p-5 bg-indigo-50/50 border border-indigo-100 rounded-2xl font-bold text-indigo-600 outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all" required>
                     </div>
                     <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Komisi Affiliate (Rp)</label>
-                        <input type="number" id="p-commission" placeholder="0" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 transition-all font-bold text-slate-700">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Cover Image URL</label>
+                        <div class="flex gap-6 items-start">
+                            <div class="flex-1">
+                                <input type="text" id="p-image" placeholder="https://ik.imagekit.io/..." class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-[10px] text-slate-500" oninput="updateProdPreview(this.value)">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-3">Sync from media engine history</p>
+                            </div>
+                            <div class="w-24 h-24 bg-slate-50 rounded-3xl border border-slate-100 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-inner">
+                                 <img id="p-image-preview" src="" class="w-full h-full object-cover hidden" onerror="this.classList.add('hidden'); document.getElementById('p-image-placeholder').classList.remove('hidden');">
+                                 <i data-lucide="image" class="w-8 h-8 text-slate-200" id="p-image-placeholder"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Direct Delivery Link</label>
+                        <input type="text" id="p-url" placeholder="https://..." class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-mono text-xs text-slate-600" required>
+                    </div>
+
+                    <div class="bg-slate-900 p-8 rounded-[2.5rem] border border-slate-800 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
+                        <div class="flex items-center gap-3 mb-6 relative z-10">
+                            <i data-lucide="activity" class="w-4 h-4 text-indigo-400"></i>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Meta Conversion API</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">PIXEL ID</label>
+                                <input type="text" id="p-pixel-id" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">ACCESS TOKEN</label>
+                                <input type="text" id="p-pixel-token" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">TEST EVENT</label>
+                                <input type="text" id="p-pixel-test" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Marketing Copy (Katalog)</label>
+                        <textarea id="p-desc" placeholder="Write a compelling description..." class="w-full p-6 bg-slate-50 border border-slate-100 rounded-[1.5rem] outline-none h-32 font-medium text-sm text-slate-600 focus:border-indigo-500 transition-all"></textarea>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-100 mt-6">
+                        <button type="button" onclick="closeModal('modal-prod')" class="p-4 font-black text-slate-400 hover:text-slate-600 transition-colors order-2 sm:order-1 uppercase text-[10px] tracking-widest">Abort</button>
+                        <button type="submit" class="flex-1 bg-indigo-600 text-white p-5 rounded-2xl font-black shadow-2xl shadow-indigo-100 hover:bg-indigo-700 transition-all uppercase text-[10px] tracking-[0.3em] order-1 sm:order-2 active:scale-[0.98]">Deploy Product Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
                 
                 <div>
                     <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Nama Produk</label>
@@ -662,25 +772,95 @@
     </div>
 
     <!-- MODAL PAGE -->
-    <div id="modal-page" class="fixed inset-0 bg-slate-900/70 hidden z-[300] items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white w-full max-w-5xl rounded-[2.5rem] p-6 md:p-10 shadow-2xl max-h-[95vh] overflow-y-auto custom-scroll relative">
-            <button onclick="closeModal('modal-page')" class="absolute top-6 right-6 p-2 bg-slate-50 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="modal-page" class="fixed inset-0 z-[300] hidden items-center justify-center p-6 bg-slate-900/60 backdrop-blur-md">
+        <div class="bg-white w-full max-w-5xl rounded-[3rem] shadow-2xl overflow-hidden max-h-[95vh] flex flex-col relative transition-all duration-300">
+            <button onclick="closeModal('modal-page')" class="absolute top-8 right-8 p-3 bg-slate-50 rounded-2xl text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all z-10 shadow-sm border border-slate-100"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-            <h3 class="text-2xl font-bold mb-2 text-slate-800">Editor Halaman</h3>
-            <p class="text-slate-500 text-sm mb-8">Buat halaman landing page atau informasi.</p>
+            <div class="px-10 py-8 border-b border-slate-50 bg-slate-50/20 flex-shrink-0">
+                <h3 class="text-xl font-black text-slate-900 tracking-tighter uppercase leading-none">CMS Engine Builder</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Design and publish dynamic landing pages</p>
+            </div>
             
-            <form id="form-page" class="space-y-5">
-                <input type="hidden" id="pg-id"><input type="hidden" id="pg-is-edit">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Judul Halaman</label>
-                        <input type="text" id="pg-title" placeholder="Judul Halaman" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 font-bold transition-all" required>
+            <div class="p-10 overflow-y-auto custom-scroll flex-1">
+                <form id="form-page" class="space-y-8">
+                    <input type="hidden" id="pg-id"><input type="hidden" id="pg-is-edit">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Document Title</label>
+                            <input type="text" id="pg-title" placeholder="Ex: Special Promo Page" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 font-bold text-slate-900 transition-all" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Public URL Slug</label>
+                            <input type="text" id="pg-slug" placeholder="promo-january" class="w-full p-5 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-indigo-500 font-black text-indigo-600 transition-all uppercase" required>
+                        </div>
                     </div>
-                    <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 mb-2 block">Slug URL</label>
-                        <input type="text" id="pg-slug" placeholder="slug-halaman" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 font-bold transition-all" required>
+
+                    <!-- Meta Pixel Config -->
+                    <div class="bg-slate-900 p-8 rounded-[2.5rem] border border-slate-800 shadow-2xl relative overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl -ml-16 -mb-16"></div>
+                        <div class="flex items-center gap-3 mb-6 relative z-10">
+                            <i data-lucide="activity" class="w-4 h-4 text-indigo-400"></i>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Meta Conversion API (Page Specific)</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">PIXEL ID</label>
+                                <input type="text" id="pg-pixel-id" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">ACCESS TOKEN</label>
+                                <input type="text" id="pg-pixel-token" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black text-slate-500 uppercase tracking-widest ml-1 mb-2 block">TEST EVENT</label>
+                                <input type="text" id="pg-pixel-test" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-indigo-500 text-[10px] font-mono text-white transition-all">
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Theme Config -->
+                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-50 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i data-lucide="palette" class="w-4 h-4 text-indigo-600"></i>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Atmosphere Theme</span>
+                        </div>
+                        <div class="flex gap-6">
+                            <label class="cursor-pointer flex items-center gap-2 group">
+                                <input type="radio" name="pg-theme" value="light" class="peer sr-only" checked>
+                                <div class="px-6 py-3 rounded-2xl border border-slate-100 bg-white peer-checked:border-indigo-600 peer-checked:bg-indigo-50 transition-all flex items-center gap-3 shadow-sm">
+                                    <i data-lucide="sun" class="w-4 h-4 text-amber-500 group-hover:rotate-45 transition-transform"></i>
+                                    <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Daylight</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer flex items-center gap-2 group">
+                                <input type="radio" name="pg-theme" value="dark" class="peer sr-only">
+                                <div class="px-6 py-3 rounded-2xl border border-slate-900 bg-slate-900 peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-600 transition-all flex items-center gap-3 shadow-xl">
+                                    <i data-lucide="moon" class="w-4 h-4 text-indigo-400 group-hover:-rotate-12 transition-transform"></i>
+                                    <span class="text-[10px] font-black text-white uppercase tracking-widest">Midnight</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-3 block">HTML Source Code</label>
+                        <div class="relative group">
+                            <textarea id="pg-content" rows="15" placeholder="<!-- Deploy your Tailwind-based HTML here -->" class="w-full p-8 bg-slate-900 text-indigo-300 border border-slate-800 rounded-[2rem] font-mono text-[10px] custom-scroll focus:ring-4 focus:ring-indigo-500/20 outline-none transition-all shadow-2xl"></textarea>
+                            <div class="absolute bottom-6 right-6 flex gap-3">
+                                <button type="button" onclick="downloadPageHTML()" class="bg-white/5 hover:bg-white/10 text-white/50 hover:text-white px-4 py-2 rounded-xl text-[8px] font-black uppercase tracking-widest transition-all backdrop-blur-md border border-white/10">
+                                    Export .HTML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center pt-8 border-t border-slate-100 mt-6 gap-4">
+                        <button type="button" onclick="closeModal('modal-page')" class="px-8 font-black text-slate-400 hover:text-slate-600 transition-colors uppercase text-[10px] tracking-widest">Abort</button>
+                        <button type="submit" form="form-page" class="flex-1 bg-indigo-600 text-white p-6 rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.3em] shadow-2xl shadow-indigo-100 hover:bg-indigo-700 transition-all active:scale-[0.98]">Publish CMS Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
                 <!-- Meta Pixel Config -->
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6">
@@ -778,7 +958,7 @@
 
         function pushAuthTelemetry(entry) {
             try {
-                const key = 'cepat_auth_telemetry';
+                const key = 'rian_auth_telemetry';
                 const prev = JSON.parse(localStorage.getItem(key) || '[]');
                 const arr = Array.isArray(prev) ? prev : [];
                 arr.push({
@@ -1730,7 +1910,7 @@ src="https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1"
             }; 
             await submitFormToGAS('form-sys', { action: 'update_settings', payload: p }, 'API Sistem Updated!');
             // Clear local cache agar perubahan langsung terlihat di halaman depan
-            localStorage.removeItem('cepat_global_settings');
+            localStorage.setItem('rian_global_settings', JSON.stringify({ data: p, time: Date.now() }));
         };
 
         document.getElementById('form-cf').onsubmit = async (e) => { 

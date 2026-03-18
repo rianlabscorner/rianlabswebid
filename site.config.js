@@ -15,21 +15,21 @@
 var SITE_CONFIG = {
     // ── Domain Utama (Production) ──────────────────────────
     // Domain utama yang digunakan untuk akses situs
-    PRIMARY_DOMAIN: 'cepat.icu',
+    PRIMARY_DOMAIN: 'rianlabs.id',
 
     // ── Daftar Domain yang Diizinkan ───────────────────────
     // Semua domain (termasuk www dan alias lainnya)
     // yang diizinkan untuk mengakses aplikasi ini.
     ALLOWED_DOMAINS: [
-        'cepat.icu',
-        'www.cepat.icu',
+        'rianlabs.id',
+        'www.rianlabs.id',
     ],
 
     // ── Pattern Subdomain yang Diizinkan ───────────────────
-    // Subdomain wildcard, e.g. '*.cepat.icu' direpresentasikan
-    // sebagai '.cepat.icu' (dengan titik di depan).
+    // Subdomain wildcard, e.g. '*.rianlabs.id' direpresentasikan
+    // sebagai '.rianlabs.id' (dengan titik di depan).
     ALLOWED_SUBDOMAIN_SUFFIXES: [
-        '.cepat.icu',
+        '.rianlabs.id',
     ],
 
     // ── Cloudflare Pages Preview ───────────────────────────
