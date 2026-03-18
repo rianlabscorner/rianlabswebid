@@ -205,7 +205,7 @@ async function handleApi(request, env, ctx) {
     });
   }
 
-  const gasUrl = env.APP_GAS_URL || 'GANTI DENGAN GAS ANDA';
+  const gasUrl = env.APP_GAS_URL || 'https://script.google.com/macros/s/AKfycbxhxCAqmu436zGGsvKaZKLWA7xNcnu7V4sxZeVfuyRY8zJneyMVvpZ0O26CHwF2NqgZCQ/exec';
   if (!gasUrl) {
     return new Response(JSON.stringify({ status: 'error', message: 'Missing environment variable (APP_GAS_URL)' }), {
       status: 500,

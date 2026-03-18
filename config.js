@@ -145,7 +145,7 @@
             try { window.API_URL = _url; } catch (e2) { }
         }
         try {
-            if (!window.__CEPAT_FETCH_WRAPPED__ && typeof window.fetch === 'function') {
+            if (!window.__RIAN_FETCH_WRAPPED__ && typeof window.fetch === 'function') {
                 var _nativeFetch = window.fetch.bind(window);
                 var _sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
                 var _getUrl = function (input) {
@@ -231,7 +231,7 @@
                     }
                     throw lastErr || new Error('Backend unreachable: ' + (url || '(unknown url)'));
                 };
-                window.__CEPAT_FETCH_WRAPPED__ = true;
+                window.__RIAN_FETCH_WRAPPED__ = true;
                 window.fetch = function (input, init) {
                     var url = _getUrl(input);
                     if (_isScriptTarget(url)) {
@@ -242,7 +242,7 @@
             }
         } catch (e) { }
         try {
-            if (!window.__CEPAT_SYNC__ && typeof window.fetch === 'function') {
+            if (!window.__RIAN_SYNC__ && typeof window.fetch === 'function') {
                 var _syncStorageKey = 'cepat_sync_state_v1';
                 var _ls = function () { try { return window.localStorage; } catch (e) { return null; } };
                 var _readSyncLocal = function () {
@@ -364,7 +364,7 @@
                     return true;
                 };
                 if (_isEnabled()) {
-                    window.__CEPAT_SYNC__ = {
+                    window.__RIAN_SYNC__ = {
                         check: _checkOnce,
                         fetchState: _fetchSyncState,
                         invalidate: _invalidateLocalCaches
